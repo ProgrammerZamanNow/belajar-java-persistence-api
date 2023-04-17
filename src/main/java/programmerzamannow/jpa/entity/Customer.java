@@ -1,5 +1,6 @@
 package programmerzamannow.jpa.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -9,9 +10,22 @@ import jakarta.persistence.Table;
 public class Customer {
 
     @Id
+    @Column(name = "id")
     private String id;
 
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "primary_email")
+    private String primaryEmail;
+
+    public String getPrimaryEmail() {
+        return primaryEmail;
+    }
+
+    public void setPrimaryEmail(String primaryEmail) {
+        this.primaryEmail = primaryEmail;
+    }
 
     public String getId() {
         return id;
