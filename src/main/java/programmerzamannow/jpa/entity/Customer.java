@@ -19,6 +19,26 @@ public class Customer {
     @Column(name = "primary_email")
     private String primaryEmail;
 
+    private Boolean married;
+
+    private Byte age;
+
+    public Boolean getMarried() {
+        return married;
+    }
+
+    public void setMarried(Boolean married) {
+        this.married = married;
+    }
+
+    public Byte getAge() {
+        return age;
+    }
+
+    public void setAge(Byte age) {
+        this.age = age;
+    }
+
     public String getPrimaryEmail() {
         return primaryEmail;
     }
