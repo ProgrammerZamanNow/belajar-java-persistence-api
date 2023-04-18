@@ -42,4 +42,15 @@ ALTER TABLE categories
 ALTER TABLE categories
     ADD COLUMN updated_at TIMESTAMP;
 
-SELECT * FROM categories;
+SELECT *
+FROM categories;
+
+CREATE TABLE images
+(
+    id          INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name        VARCHAR(100) NOT NULL,
+    description TEXT,
+    image       BLOB
+) ENGINE InnoDB;
+
+SELECT * FROM images;
