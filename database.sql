@@ -103,3 +103,5 @@ CREATE TABLE skills
 ) ENGINE InnoDB;
 
 SELECT * FROM skills;
+
+SELECT * FROM categories;
