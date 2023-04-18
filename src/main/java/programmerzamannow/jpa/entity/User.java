@@ -2,6 +2,8 @@ package programmerzamannow.jpa.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -20,6 +22,22 @@ public class User {
 
     @OneToOne(mappedBy = "user")
     private Wallet wallet;
+
+    @ManyToMany
+    @JoinTable(
+            name = "users_like_products",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id")
+    )
+    private Set<Product> likes;
+
+    public Set<Product> getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Set<Product> likes) {
+        this.likes = likes;
+    }
 
     public Wallet getWallet() {
         return wallet;

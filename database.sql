@@ -162,4 +162,16 @@ CREATE TABLE products
     FOREIGN KEY fk_brands_products (brand_id) REFERENCES brands (id)
 ) ENGINE InnoDB;
 
-SELECT * FROM products;
+SELECT *
+FROM products;
+
+CREATE TABLE users_like_products
+(
+    user_id    VARCHAR(100) NOT NULL,
+    product_id VARCHAR(100) NOT NULL,
+    FOREIGN KEY fk_users_to_users_like_products (user_id) REFERENCES users (id),
+    FOREIGN KEY fk_products_to_users_like_products (product_id) REFERENCES products (id),
+    PRIMARY KEY (user_id, product_id)
+) ENGINE InnoDB;
+
+SELECT * FROM users_like_products;
