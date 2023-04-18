@@ -17,7 +17,7 @@ public class Product {
 
     private Long price;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "brand_id", referencedColumnName = "id")
     private Brand brand;
 
