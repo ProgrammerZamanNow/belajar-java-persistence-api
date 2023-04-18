@@ -35,3 +35,11 @@ FROM customers;
 
 ALTER TABLE customers
     ADD COLUMN type VARCHAR(50);
+
+ALTER TABLE categories
+    ADD COLUMN created_at TIMESTAMP;
+
+ALTER TABLE categories
+    ADD COLUMN updated_at TIMESTAMP;
+
+SELECT * FROM categories;
