@@ -102,8 +102,41 @@ CREATE TABLE skills
     CONSTRAINT skills_unique UNIQUE (member_id, name)
 ) ENGINE InnoDB;
 
-SELECT * FROM skills;
+SELECT *
+FROM skills;
 
-SELECT * FROM categories;
+SELECT *
+FROM categories;
 
-SELECT * FROM members WHERE  id = 1;
+SELECT *
+FROM members
+WHERE id = 1;
+
+CREATE TABLE credentials
+(
+    id       VARCHAR(100) NOT NULL PRIMARY KEY,
+    email    VARCHAR(150) NOT NULL,
+    password VARCHAR(150) NOT NULL
+) ENGINE InnoDB;
+
+SELECT *
+FROM credentials;
+
+CREATE TABLE users
+(
+    id   VARCHAR(100) NOT NULL PRIMARY KEY,
+    name VARCHAR(150) NOT NULL
+) ENGINE InnoDB;
+
+SELECT *
+FROM users;
+
+CREATE TABLE wallet
+(
+    id      INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_id VARCHAR(100) NOT NULL,
+    balance BIGINT       NOT NULL,
+    FOREIGN KEY fk_users_wallet (user_id) REFERENCES users (id)
+) ENGINE InnoDB;
+
+SELECT * FROM wallet;
