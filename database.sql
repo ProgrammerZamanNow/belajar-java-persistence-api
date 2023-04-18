@@ -21,7 +21,8 @@ CREATE TABLE categories
     description VARCHAR(500)
 ) ENGINE InnoDB;
 
-SELECT * FROM categories;
+SELECT *
+FROM categories;
 
 ALTER TABLE customers
     ADD COLUMN age TINYINT;
@@ -29,4 +30,8 @@ ALTER TABLE customers
 ALTER TABLE customers
     ADD COLUMN married BOOLEAN;
 
-SELECT * FROM customers;
+SELECT *
+FROM customers;
+
+ALTER TABLE customers
+    ADD COLUMN type VARCHAR(50);

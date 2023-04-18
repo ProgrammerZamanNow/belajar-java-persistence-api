@@ -1,9 +1,6 @@
 package programmerzamannow.jpa.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "customers")
@@ -22,6 +19,17 @@ public class Customer {
     private Boolean married;
 
     private Byte age;
+
+    @Enumerated(EnumType.STRING)
+    private CustomerType type;
+
+    public CustomerType getType() {
+        return type;
+    }
+
+    public void setType(CustomerType type) {
+        this.type = type;
+    }
 
     public Boolean getMarried() {
         return married;
