@@ -105,3 +105,5 @@ CREATE TABLE skills
 SELECT * FROM skills;
 
 SELECT * FROM categories;
+
+SELECT * FROM members WHERE  id = 1;
