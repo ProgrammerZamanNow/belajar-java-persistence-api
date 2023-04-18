@@ -3,6 +3,7 @@ package programmerzamannow.jpa.entity;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Entity
 @Table(name = "members")
@@ -23,6 +24,22 @@ public class Member {
     ))
     @Column(name = "name")
     private List<String> hobbies;
+
+    @ElementCollection
+    @CollectionTable(name = "skills", joinColumns = @JoinColumn(
+            name = "member_id", referencedColumnName = "id"
+    ))
+    @MapKeyColumn(name = "name")
+    @Column(name = "value")
+    private Map<String, Integer> skills;
+
+    public Map<String, Integer> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(Map<String, Integer> skills) {
+        this.skills = skills;
+    }
 
     public List<String> getHobbies() {
         return hobbies;
