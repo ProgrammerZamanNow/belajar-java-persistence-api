@@ -13,6 +13,7 @@
         <class>programmerzamannow.jpa.entity.Category</class>
         <class>programmerzamannow.jpa.entity.Image</class>
         <class>programmerzamannow.jpa.entity.Member</class>
+        <class>programmerzamannow.jpa.entity.Department</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
