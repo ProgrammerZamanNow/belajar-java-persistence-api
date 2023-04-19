@@ -174,4 +174,16 @@ CREATE TABLE users_like_products
     PRIMARY KEY (user_id, product_id)
 ) ENGINE InnoDB;
 
-SELECT * FROM users_like_products;
+SELECT *
+FROM users_like_products;
+
+CREATE TABLE employees
+(
+    id             VARCHAR(100) NOT NULL PRIMARY KEY,
+    type           VARCHAR(50)  NOT NULL,
+    name           VARCHAR(100) NOT NULL,
+    total_manager  INT,
+    total_employee INT
+) ENGINE InnoDB;
+
+SELECT * FROM employees;

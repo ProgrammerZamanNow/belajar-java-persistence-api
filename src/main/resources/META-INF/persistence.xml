@@ -19,6 +19,10 @@
         <class>programmerzamannow.jpa.entity.Wallet</class>
         <class>programmerzamannow.jpa.entity.Product</class>
         <class>programmerzamannow.jpa.entity.Brand</class>
+        <class>programmerzamannow.jpa.entity.Department</class>
+        <class>programmerzamannow.jpa.entity.Employee</class>
+        <class>programmerzamannow.jpa.entity.Manager</class>
+        <class>programmerzamannow.jpa.entity.VicePresident</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
