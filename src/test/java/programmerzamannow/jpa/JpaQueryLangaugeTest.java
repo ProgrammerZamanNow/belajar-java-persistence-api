@@ -150,4 +150,23 @@ public class JpaQueryLangaugeTest {
         entityTransaction.commit();
         entityManager.close();
     }
+
+    @Test
+    void namedQuery() {
+        EntityManagerFactory entityManagerFactory = JpaUtil.getEntityManagerFactory();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+
+        TypedQuery<Brand> query = entityManager.createNamedQuery("Brand.findAllByName", Brand.class);
+        query.setParameter("name", "Xiaomi");
+
+        List<Brand> brands = query.getResultList();
+        for (Brand brand : brands) {
+            System.out.println(brand.getName());
+        }
+
+        entityTransaction.commit();
+        entityManager.close();
+    }
 }
