@@ -23,6 +23,9 @@
         <class>programmerzamannow.jpa.entity.Employee</class>
         <class>programmerzamannow.jpa.entity.Manager</class>
         <class>programmerzamannow.jpa.entity.VicePresident</class>
+        <class>programmerzamannow.jpa.entity.Payment</class>
+        <class>programmerzamannow.jpa.entity.PaymentGopay</class>
+        <class>programmerzamannow.jpa.entity.PaymentCreditCard</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
