@@ -112,4 +112,42 @@ public class JpaQueryLangaugeTest {
         entityTransaction.commit();
         entityManager.close();
     }
+
+    @Test
+    void insertRandomBrand() {
+        EntityManagerFactory entityManagerFactory = JpaUtil.getEntityManagerFactory();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+
+        for (int i = 0; i < 100; i++){
+            Brand brand = new Brand();
+            brand.setId(String.valueOf(i));
+            brand.setName("Brand " + i);
+            entityManager.persist(brand);
+        }
+
+        entityTransaction.commit();
+        entityManager.close();
+    }
+
+    @Test
+    void limitOffset() {
+        EntityManagerFactory entityManagerFactory = JpaUtil.getEntityManagerFactory();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+
+        TypedQuery<Brand> query = entityManager.createQuery("select b from Brand b order by b.id", Brand.class);
+        query.setFirstResult(10);
+        query.setMaxResults(10);
+
+        List<Brand> brands = query.getResultList();
+        for (Brand brand : brands) {
+            System.out.println(brand.getId());
+        }
+
+        entityTransaction.commit();
+        entityManager.close();
+    }
 }
