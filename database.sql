@@ -270,6 +270,6 @@ INSERT INTO products(id, brand_id, name, price, description)
 INSERT INTO products(id, brand_id, name, price, description)
     VALUE ('p4', 'xiaomi', 'Xiaomi 2', 1000000, '');
 
-SELECT * FROM brands WHERE id = 'samsung';
+SELECT * FROM brands WHERE id = 'apple';
 
 UPDATE brands SET name = 'Samsung' where id = 'samsung';

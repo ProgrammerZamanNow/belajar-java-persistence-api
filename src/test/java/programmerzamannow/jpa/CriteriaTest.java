@@ -1,9 +1,6 @@
 package programmerzamannow.jpa;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.*;
 import jakarta.persistence.criteria.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -239,6 +236,32 @@ public class CriteriaTest {
             System.out.println("Max : " + object[2]);
             System.out.println("Average : " + object[3]);
         }
+
+        entityTransaction.commit();
+        entityManager.close();
+    }
+
+    @Test
+    void criteriaNonQuery() {
+        EntityManagerFactory entityManagerFactory = JpaUtil.getEntityManagerFactory();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaUpdate<Brand> criteria = builder.createCriteriaUpdate(Brand.class);
+        Root<Brand> b = criteria.from(Brand.class);
+
+        criteria.set(b.get("name"), "Apple Updated");
+        criteria.set(b.get("description"), "Apple Company");
+
+        criteria.where(
+                builder.equal(b.get("id"), "apple")
+        );
+
+        Query query = entityManager.createQuery(criteria);
+        int impactedRecords = query.executeUpdate();
+        System.out.println("Success update " + impactedRecords + " records");
 
         entityTransaction.commit();
         entityManager.close();
