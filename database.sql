@@ -248,3 +248,11 @@ CREATE TABLE transactions_debit
 ) ENGINE InnoDB;
 
 SELECT * FROM transactions_debit;
+
+ALTER TABLE brands
+    ADD COLUMN created_at TIMESTAMP;
+
+ALTER TABLE brands
+    ADD COLUMN updated_at TIMESTAMP;
+
+SELECT * FROM brands;

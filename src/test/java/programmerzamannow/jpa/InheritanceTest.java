@@ -167,4 +167,23 @@ public class InheritanceTest {
         entityTransaction.commit();
         entityManager.close();
     }
+
+    @Test
+    void mappedSuperclass() {
+        EntityManagerFactory entityManagerFactory = JpaUtil.getEntityManagerFactory();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+
+        Brand brand = new Brand();
+        brand.setId("xiaomi");
+        brand.setName("Xiaomi");
+        brand.setDescription("Xiaomi Global");
+        brand.setCreatedAt(LocalDateTime.now());
+        brand.setUpdatedAt(LocalDateTime.now());
+        entityManager.persist(brand);
+
+        entityTransaction.commit();
+        entityManager.close();
+    }
 }

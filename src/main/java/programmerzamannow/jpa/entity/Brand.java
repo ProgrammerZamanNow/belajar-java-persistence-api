@@ -9,10 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "brands")
-public class Brand {
-
-    @Id
-    private String id;
+public class Brand extends AuditableEntity<String>{
 
     private String name;
 
@@ -20,14 +17,6 @@ public class Brand {
 
     @OneToMany(mappedBy = "brand")
     private List<Product> products;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
