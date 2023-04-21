@@ -87,4 +87,60 @@ public class CriteriaTest {
         entityTransaction.commit();
         entityManager.close();
     }
+
+    @Test
+    void criteriaWhereClause() {
+        EntityManagerFactory entityManagerFactory = JpaUtil.getEntityManagerFactory();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Brand> criteria = builder.createQuery(Brand.class);
+        Root<Brand> b = criteria.from(Brand.class);
+        criteria.select(b);
+
+        criteria.where(
+                builder.equal(b.get("name"), "Xiaomi"),
+                builder.isNotNull(b.get("createdAt"))
+        );
+
+        TypedQuery<Brand> query = entityManager.createQuery(criteria);
+        List<Brand> brands = query.getResultList();
+        for (Brand brand : brands) {
+            System.out.println(brand.getId() + " : " + brand.getName());
+        }
+
+        entityTransaction.commit();
+        entityManager.close();
+    }
+
+    @Test
+    void criteriaWhereClauseUsingOrOperator() {
+        EntityManagerFactory entityManagerFactory = JpaUtil.getEntityManagerFactory();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Brand> criteria = builder.createQuery(Brand.class);
+        Root<Brand> b = criteria.from(Brand.class);
+        criteria.select(b);
+
+        criteria.where(
+                builder.or(
+                        builder.equal(b.get("name"), "Xiaomi"),
+                        builder.equal(b.get("name"), "Samsung")
+                )
+        );
+
+        TypedQuery<Brand> query = entityManager.createQuery(criteria);
+        List<Brand> brands = query.getResultList();
+        for (Brand brand : brands) {
+            System.out.println(brand.getId() + " : " + brand.getName());
+        }
+
+        entityTransaction.commit();
+        entityManager.close();
+    }
 }
