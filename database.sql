@@ -261,3 +261,11 @@ ALTER TABLE brands
     ADD COLUMN version BIGINT;
 
 SELECT * FROM brands;
+
+SELECT * FROM products;
+
+INSERT INTO products(id, brand_id, name, price, description)
+    VALUE ('p3', 'xiaomi', 'Xiaomi 1', 2000000, '');
+
+INSERT INTO products(id, brand_id, name, price, description)
+    VALUE ('p4', 'xiaomi', 'Xiaomi 2', 1000000, '');
