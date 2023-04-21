@@ -26,6 +26,9 @@
         <class>programmerzamannow.jpa.entity.Payment</class>
         <class>programmerzamannow.jpa.entity.PaymentGopay</class>
         <class>programmerzamannow.jpa.entity.PaymentCreditCard</class>
+        <class>programmerzamannow.jpa.entity.Transaction</class>
+        <class>programmerzamannow.jpa.entity.TransactionDebit</class>
+        <class>programmerzamannow.jpa.entity.TransactionCredit</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>

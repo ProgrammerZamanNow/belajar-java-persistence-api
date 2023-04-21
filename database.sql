@@ -216,4 +216,35 @@ CREATE TABLE payments_credit_card
     FOREIGN KEY fk_payments_credit_card (id) REFERENCES payments (id)
 ) ENGINE InnoDB;
 
-SELECT * FROM payments_credit_card;
+SELECT *
+FROM payments_credit_card;
+
+CREATE TABLE transactions
+(
+    id         VARCHAR(100) NOT NULL PRIMARY KEY,
+    balance    BIGINT       NOT NULL,
+    created_at TIMESTAMP    NOT NULL
+) ENGINE InnoDB;
+
+SELECT *
+FROM transactions;
+
+CREATE TABLE transactions_credit
+(
+    id            VARCHAR(100) NOT NULL PRIMARY KEY,
+    balance       BIGINT       NOT NULL,
+    created_at    TIMESTAMP    NOT NULL,
+    credit_amount BIGINT       NOT NULL
+) ENGINE InnoDB;
+
+SELECT * FROM transactions_credit;
+
+CREATE TABLE transactions_debit
+(
+    id            VARCHAR(100) NOT NULL PRIMARY KEY,
+    balance       BIGINT       NOT NULL,
+    created_at    TIMESTAMP    NOT NULL,
+    debit_amount BIGINT       NOT NULL
+) ENGINE InnoDB;
+
+SELECT * FROM transactions_debit;
