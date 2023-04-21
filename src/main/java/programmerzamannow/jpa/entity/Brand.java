@@ -1,9 +1,6 @@
 package programmerzamannow.jpa.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -17,6 +14,17 @@ public class Brand extends AuditableEntity<String>{
 
     @OneToMany(mappedBy = "brand")
     private List<Product> products;
+
+    @Version
+    private Long version;
+
+    public Long getVersion() {
+        return version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
+    }
 
     public String getName() {
         return name;
